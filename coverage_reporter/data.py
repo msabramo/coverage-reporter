@@ -3,6 +3,7 @@
 # coverage.py arcs.
 import os
 
+
 class CoverageData(object):
     """
     In general, do not pickle this object; it's simpler and more
@@ -39,7 +40,7 @@ class CoverageData(object):
         if path not in self._paths:
             self._paths[path] = os.path.realpath(os.path.abspath(path))
         return self._paths[path]
-    
+
     def get_lines_for_path(self, path):
         return (self.lines.get(path, set()), self.covered.get(path, set()))
 
@@ -56,19 +57,19 @@ class CoverageData(object):
             num_lines = len(lines)
             num_covered = len(covered_lines)
             if num_lines:
-                percent_covered = (num_covered * 100)/float(num_lines)
+                percent_covered = (num_covered * 100) / float(num_lines)
             else:
                 percent_covered = 0.0
-            report_info[path] = { 'lines' : num_lines, 
-                                  'covered' : num_covered, 
-                                  'percent' : percent_covered,
-                                  'missing' : num_lines - num_covered }
+            report_info[path] = {'lines': num_lines,
+                                 'covered': num_covered,
+                                 'percent': percent_covered,
+                                 'missing': num_lines - num_covered}
             total_covered += num_covered
             total_lines += num_lines
         if not total_lines:
             total_percent = 0.0
         else:
-            total_percent = (total_covered * 100)/float(total_lines)
+            total_percent = (total_covered * 100) / float(total_lines)
         return report_info, (total_lines, total_covered, total_percent)
 
     def get_missing_lines_for_path(self, path):
