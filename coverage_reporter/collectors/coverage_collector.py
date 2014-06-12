@@ -11,7 +11,7 @@ class CoveragePyCollector(BaseCollector):
                        help='Enables loading of coverage information from coverage.py'),
                 Option('coverage_file', 
                        'string', 
-                       help='name of coveragel file to look at for coverage information.  Default .coverage', 
+                       help='name of coverage file to look at for coverage information.  Default .coverage', 
                        default='.coverage'),
               ]
 
